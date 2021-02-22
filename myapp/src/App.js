@@ -37,12 +37,18 @@ class App extends Component {
         break;
       
       default: throw new Error("no Event passed");
-      break;
     }
  }
  sendAlert = () =>{
    //Post request can be made here
-   alert("Form Sent");
+   let postObject = {
+     //password sollte vorher gehashed sein wenn möglich
+     username: this.state.username,
+     email: this.state.email,
+     password: this.state.password,
+     framework: this.state.framework,
+   }
+   alert(`Sent form with ${JSON.stringify(postObject)}`);
  }
 
   render(){
@@ -53,7 +59,7 @@ class App extends Component {
           Username</FormLabel>
           <TextField 
             id="username" 
-            name="email"
+            name="username"
             label="Standard" 
             value={this.state.username} 
             onChange={this.handleEvent}/>
