@@ -16,21 +16,6 @@ class App extends Component {
   
   }
   
-  handleUserName = (event) => {
-    console.log(event.target.id)
-    this.setState({username: event.target.value});
- }
-  handleEmail = (event) => {
-    this.setState({email: event.target.value});
- }
-  handlePassword = (event) => {
-    this.setState({password: event.target.value});
- }
-  handleFramework = (event) => {
-    console.log(event.target)
-    this.setState({framework: event.target.value});
- }
-
  handleEvent = (event) => {
    //name statt id weil der Select kein id property hat 
     let target = event.target.name; 
@@ -108,11 +93,6 @@ class App extends Component {
             onClick={this.sendAlert}
           >Send</Button>
         </form>
-
-        <a>{this.state.username}</a>
-        <a>{this.state.email}</a>
-        <a>{this.state.password}</a>
-        <a>{this.state.framework}</a>
       </div>
     )
   }
