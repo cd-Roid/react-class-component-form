@@ -25,6 +25,10 @@ class App extends Component {
     return re.test(String(email).toLowerCase());
   }
   
+  validatePassword = (password) => {
+    const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    return re.test(password);
+  }
   handleEvent = (event) => {
    //name statt id weil der Select kein id property hat 
     let target = event.target.name; 
@@ -50,10 +54,11 @@ class App extends Component {
       
       case "password":
         this.setState({password: event.target.value});
-        if(this.state.password.length < 5){
-          this.setState({passwordError: true});
-        }else{
+        let password = this.state.password;
+        if(this.validatePassword(password)){
           this.setState({passwordError: false});
+        }else{
+          this.setState({passwordError: true});
         }
         break;
       
@@ -115,7 +120,7 @@ class App extends Component {
             value={this.state.password} 
             onChange={this.handleEvent}
             error= {this.state.passwordError}
-            helperText={this.state.passwordError ? 'Password must be longer than 5 characters':''}/>
+            helperText={this.state.passwordError ? 'Minimum eight characters, at least one letter and one number':''}/>
           
           <FormLabel id="label">Framework</FormLabel>
           <Select
