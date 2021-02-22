@@ -1,9 +1,9 @@
 import logo from './reignite_logo_komplett_big.svg';
-import React from 'react';
+import {Component} from 'react';
 import { TextField, Button} from '@material-ui/core';
 
 
-class App extends React.Component {
+class App extends Component {
   
   render(){
     return (
