@@ -1,6 +1,6 @@
 import logo from './reignite_logo_komplett_big.svg';
 import {Component} from 'react';
-import { TextField, Button, FormLabel, Select, MenuItem} from '@material-ui/core';
+import { TextField, Button, FormLabel, Select, MenuItem, InputLabel} from '@material-ui/core';
 
 
 class App extends Component {
@@ -11,12 +11,13 @@ class App extends Component {
       username: '', 
       email: '',
       password: '',
-      framework: 0
+      framework: ''
      }
   
   }
   
   handleUserName = (event) => {
+    console.log(event.target.id)
     this.setState({username: event.target.value});
  }
   handleEmail = (event) => {
@@ -26,7 +27,33 @@ class App extends Component {
     this.setState({password: event.target.value});
  }
   handleFramework = (event) => {
+    console.log(event.target)
     this.setState({framework: event.target.value});
+ }
+
+ handleEvent = (event) => {
+   //name statt id weil der Select kein id property hat 
+    let target = event.target.name; 
+    switch (target) {
+      case "email":
+        this.setState({email: event.target.value});
+        break;
+      
+      case "username":
+        this.setState({username: event.target.value});
+        break;
+      
+      case "password":
+        this.setState({password: event.target.value});
+        break;
+      
+      case "framework":
+        this.setState({framework: event.target.value});
+        break;
+      
+      default: throw new Error("no Event passed");
+      break;
+    }
  }
  sendAlert = () =>{
    //Post request can be made here
@@ -40,30 +67,36 @@ class App extends Component {
           <FormLabel color="secondary">
           Username</FormLabel>
           <TextField 
-            id="filled-basic" 
+            id="username" 
+            name="email"
             label="Standard" 
             value={this.state.username} 
-            onChange={this.handleUserName}/>
+            onChange={this.handleEvent}/>
           <FormLabel>E-mail</FormLabel>
           <TextField 
-            id="filled-basic" 
+            id="email"
+            name="email" 
             label="Filled" 
             variant="filled" 
             value={this.state.email} 
-            onChange={this.handleEmail}/>
-            <FormLabel>Password</FormLabel>
+            onChange={this.handleEvent}/>
+          <FormLabel>Password</FormLabel>
           <TextField 
-            id="outlined-basic" 
+            name="password"
+            id="password" 
             type="password"
             label="Outlined" 
             variant="outlined" 
             value={this.state.password} 
-            onChange={this.handlePassword}/>
+            onChange={this.handleEvent}/>
+          
+          <FormLabel id="label">Framework</FormLabel>
           <Select
-            labelId="simple-select-label"
-            id="simple-select"
+            name="framework"
+            labelId="label"
+            id="framework"
             value={this.state.framework}
-            onChange={this.handleFramework}
+            onChange={this.handleEvent}
           >
           <MenuItem value={"React"}>React</MenuItem>
           <MenuItem value={"Angular"}>Angular</MenuItem>
@@ -75,6 +108,11 @@ class App extends Component {
             onClick={this.sendAlert}
           >Send</Button>
         </form>
+
+        <a>{this.state.username}</a>
+        <a>{this.state.email}</a>
+        <a>{this.state.password}</a>
+        <a>{this.state.framework}</a>
       </div>
     )
   }
