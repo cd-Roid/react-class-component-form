@@ -122,13 +122,10 @@ class App extends Component {
         <Grid container spacing = {12}  m= {10} justify="center" alignItems="center">
           <Paper className={classes.paper}>
             <Grid item xl= {10} className={classes.fields}>
-              <FormLabel 
-              color="secondary"
-              >Username</FormLabel>
               <TextField 
                 id="username" 
                 name="username"
-                label="Standard" 
+                label="Username" 
                 value={this.state.username}
                 onChange={this.handleEvent}
                 error= {this.state.userNameError}
@@ -136,11 +133,10 @@ class App extends Component {
                 required= {true}/>
           </Grid>
               <Grid item xs = {10} className={classes.fields}>
-                <FormLabel>E-mail</FormLabel>
                 <TextField 
                   id="email"
                   name="email" 
-                  label="Standard" 
+                  label="E-Mail" 
                   variant="standard" 
                   required= {true}
                   value={this.state.email} 
@@ -150,13 +146,11 @@ class App extends Component {
               </Grid>
           
               <Grid item xs ={10} className={classes.fields}>
-                
-                  <FormLabel>Password</FormLabel>
                   <TextField 
                     name="password"
                     id="password" 
                     type="password"
-                    label="Standard" 
+                    label="Password" 
                     variant="standard" 
                     required= {true}
                     value={this.state.password} 
@@ -170,10 +164,10 @@ class App extends Component {
                   <FormLabel id="label">Framework</FormLabel>
                   <Select
                     name="framework"
-                    labelId="label"
+                    labelId="Choose"
                     id="framework"
                     value={this.state.framework}
-                    onChange={this.handleEvent}å
+                    onChange={this.handleEvent}
                   >
                     <MenuItem value={"React"}>React</MenuItem>
                     <MenuItem value={"Angular"}>Angular</MenuItem>
